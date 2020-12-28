@@ -82,29 +82,29 @@ DT.
 Getting value of individual fields (field #37 is called RRN):
 
 ```
-{ok,RRN} = iso_utils:get_field_value(37,PARSED).
-RRN.
+7>{ok,RRN} = iso_utils:get_field_value(37,PARSED).
+8>RRN.
 ```
 
 Setting some field's value and building binary message:
 ```
-RRN1 = iso_utils:format_integer(133,12).
-PATCHED = iso_utils:set_field_value(37,RRN1,PARSED).
-CFG = iso_definitions:get_parser_config(biciso).
-MSG1 = iso_parser:build_message(PATCHED,CFG).
+9>RRN1 = iso_utils:format_integer(133,12).
+10>PATCHED = iso_utils:set_field_value(37,RRN1,PARSED).
+11>CFG = iso_definitions:get_parser_config(biciso).
+12>MSG1 = iso_parser:build_message(PATCHED,CFG).
 
 ```
 Now we can confirm that the new message has proper value for RRN:
 ```
-{ok,PARSED1} = iso_parser:parse_message(MSG1).
-{ok,RRN1X} = iso_utils:get_field_value(37,PARSED1).
-RRN1X.
+13>{ok,PARSED1} = iso_parser:parse_message(MSG1).
+14>{ok,RRN1X} = iso_utils:get_field_value(37,PARSED1).
+15>RRN1X.
 ```
 And finally, let's decompose P43 (Merchant Name Address): 
 ```
-{ok,P43} = iso_utils:get_field(43,PARSED1).
-ITEMS = iso_parser:field_decode_items(P43).
-ITEMS.
+16>{ok,P43} = iso_utils:get_field(43,PARSED1).
+17>ITEMS = iso_parser:field_decode_items(P43).
+18>ITEMS.
 ```
 
 Build
