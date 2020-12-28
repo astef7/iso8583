@@ -39,14 +39,14 @@ Binary message building is based on the same idea, just works in the opposite di
 
 Tokens
 ------
-BIC-ISO Tokens are supported and defined in `iso_definitions.erl`. Only subset of full Token Manual definitions is provided in the current version (B2-B4 EMV Tokens are included). #iso_msg{} keeps separate maps for fields and for tokens. By convention, tokens for 'pos' product go to P63 and for 'atm' to S126 field, respectively.
+BIC-ISO Tokens are supported and defined in `iso_definitions.erl`. Only subset of the full Token Manual definitions is provided in the current version (B2-B4 EMV Tokens are included). `#iso_msg{}` keeps separate maps for fields and for tokens. By convention, tokens for `pos` product go to P63 and for `atm` to S126 field, respectively.
 
 Structures
 ----------
 API uses the following main structures:
-#iso_field{} holds data of an individual ISO field instance. It has the id, tag, raw value and optional decoder/encoder, if sub-structure is present.
-#iso_token{} holds data of individual ISO token instance. It has the tag, raw value and decoder/encoder.
-#iso_msg{} represents parsed ISO message or object prepared for building binary ISO message. It has MTI, product code, fields, tokens and original binary message.
+`#iso_field{}` holds data of an individual ISO field instance. It has the `id`, `tag`, raw `value` and optional `decoder`/`encoder`, if sub-structure is present.
+`#iso_token{}` holds data of individual ISO token instance. It has the `tag`, raw `value` and `decoder`/`encoder`.
+`#iso_msg{}` represents parsed ISO message or object prepared for building binary ISO message. It has MTI, product code, `fields`, `tokens` and original binary message.
 
 Basic Usage
 -----------
