@@ -26,7 +26,7 @@ Library provides API for parsing/building binary messages and manipulating indiv
 
 Base principles
 ---------------
-During parsing, binary ISO-8583 message is decomposed into `#iso_msg{}` structure. This structure holds a map of fields extracted from original message. Parsing is driven by BIC-ISO field definitions, specified in `iso_definitions.erl`. Fields can have 'variant' definitions, depending on the message 'product' code (like pos, atm, fhm and other).
+During parsing, binary ISO-8583 message is decomposed into `#iso_msg{}` structure. This structure holds a map of fields extracted from original message. Parsing is driven by BIC-ISO field definitions, specified in `iso_definitions.erl`. Fields can have 'variant' definitions, depending on the message 'product' code (like `pos`, `atm`, `fhm` and other).
 
 The map of parsed fields is basically `ID -> #iso_field{}` mapping.
 `#iso_field{}` holds field value as a binary, and a few other items required for further field processing. 
