@@ -75,42 +75,46 @@ Now, you can examine fields and tokens, but first load record definitions to the
 
 Getting individual fields (field #7 is called Transmission Date Time):
 ```
-{ok,#iso_field{value=DT}=P07}=iso_utils:get_field(7,PARSED).
-DT.
+7>{ok,#iso_field{value=DT}=P07}=iso_utils:get_field(7,PARSED).
+8>DT.
 ```
 
 Getting value of individual fields (field #37 is called RRN):
 
 ```
-7>{ok,RRN} = iso_utils:get_field_value(37,PARSED).
-8>RRN.
+9>{ok,RRN} = iso_utils:get_field_value(37,PARSED).
+10>RRN.
 ```
 
 Setting some field's value and building binary message:
 ```
-9>RRN1 = iso_utils:format_integer(133,12).
-10>PATCHED = iso_utils:set_field_value(37,RRN1,PARSED).
-11>CFG = iso_definitions:get_parser_config(biciso).
-12>MSG1 = iso_parser:build_message(PATCHED,CFG).
+11>RRN1 = iso_utils:format_integer(133,12).
+12>PATCHED = iso_utils:set_field_value(37,RRN1,PARSED).
+13>CFG = iso_definitions:get_parser_config(biciso).
+14>MSG1 = iso_parser:build_message(PATCHED,CFG).
 
 ```
 Now we can confirm that the new message has proper value for RRN:
 ```
-13>{ok,PARSED1} = iso_parser:parse_message(MSG1).
-14>{ok,RRN1X} = iso_utils:get_field_value(37,PARSED1).
-15>RRN1X.
+15>{ok,PARSED1} = iso_parser:parse_message(MSG1).
+16>{ok,RRN1X} = iso_utils:get_field_value(37,PARSED1).
+17>RRN1X.
 ```
 And finally, let's decompose P43 (Merchant Name Address): 
 ```
-16>{ok,P43} = iso_utils:get_field(43,PARSED1).
-17>ITEMS = iso_parser:field_decode_items(P43).
-18>ITEMS.
+18>{ok,P43} = iso_utils:get_field(43,PARSED1).
+19>ITEMS = iso_parser:field_decode_items(P43).
+20>ITEMS.
 ```
 
 Build
 -----
     $ rebar3 compile
 
+Tests, coverage
+-----
+    $ rebar3 do eunit, cover --verbose
+    
 Credits
 -------
 Artur Stefanowicz, artur.stefanowicz7@gmail.com
