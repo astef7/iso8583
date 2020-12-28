@@ -1,0 +1,14 @@
+{application, iso8583,
+ [{description, "ISO8583 OTP Parser Library"},
+  {vsn, {git,short}},
+  {registered, []},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.
